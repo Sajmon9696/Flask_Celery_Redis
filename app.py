@@ -48,7 +48,6 @@ celery.conf.update(app.config)
 def process_form_data(name, email):
     with app.app_context():
         new_data = UserData(name=name, email=email)
-        db.session.expunge(new_data)
         db.session.add(new_data)
         db.session.commit()
 
